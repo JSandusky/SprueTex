@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/Permutations.png" width="1136" height="282">
+    <map name="Images/help/Permutations.png">
+        <area target="" alt="Apply" title="Apply" href="" coords="772,68,923,265" shape="rect" />
+        <area target="" alt="Type" title="Type" href="" coords="304,46,397,257" shape="rect" />
+        <area target="" alt="Field" title="Field" href="" coords="5,44,124,255" shape="rect" />
+        <area target="" alt="Flags" title="Flags" href="" coords="607,44,756,259" shape="rect" />
+        <area target="" alt="" title="Editing" href="" coords="130,48,294,257" shape="rect" />
+    </map>
+    <footer>
+        <p>Permutations are a useful feature of SprueTex that allow alternative values to be stored alongside a node.</p>
+        <p>In the Permutations tab all permutations for the [u]currently selected[/u] node can be viewed.</p>
+        <p>Would you like to know more? [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Properties.xml]Properties[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DataGrid.xml]DataGrid[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.History.xml]Undo/Redo[/url]</p>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="Apply">
+        <p>Any permutation can be immediately applied to the selected node by clicking the [b]apply[/b] button.</p>
+    </section>
+    <section name="Type">
+        <p>The [b]type[/b] column displays the underlying type of the permutation.</p>
+        <p>This is important for knowing how to interpret the value.</p>
+    </section>
+    <section name="Field">
+        <p>The first column indicates the field of the node that the permutation is for.</p>
+    </section>
+    <section name="Flags">
+        <p>Active user flags will be display as their text names if set.</p>
+    </section>
+    <section name="Editing">
+        <p>Only the [b]name[/b] and [b]weight[/b] field can be edited.</p>
+    </section>
+</help>

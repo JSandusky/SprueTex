@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/DesignScreen.png" width="1275" height="960">
+    <map name="Images/help/DesignScreen.png">
+        <area target="" alt="Expand" title="Expand" href="" coords="4,838,60,933" shape="rect" />
+        <area target="" alt="DocCommands" title="DocCommands" href="" coords="6,45,56,273" shape="rect" />
+        <area target="" alt="View" title="View" href="" coords="288,56,384,104" shape="rect" />
+        <area target="" alt="NodePalette" title="NodePalette" href="" coords="65,505,353,924" shape="rect" />
+        <area target="" alt="Viewport" title="Viewport" href="" coords="65,119,382,475" shape="rect" />
+        <area target="" alt="AuxTabs" title="AuxTabs" href="" coords="400,762,1252,935" shape="rect" />
+        <area target="" alt="Selected" title="Selected" href="" coords="743,115,900,347" shape="rect" />
+        <area target="" alt="Routes" title="Routes" href="" coords="560,167,637,225" shape="rect" />
+        <area target="" alt="Canvas" title="Canvas" href="" coords="420,286,752,723" shape="rect" />
+        <area target="" alt="Properties" title="Properties" href="" coords="918,86,1258,536" shape="rect" />
+        <area target="" alt="DocCommands" title="DocCommands" href="" coords="94,9,227,45" shape="rect" />
+    </map>
+    <footer>
+        <p>Would you like to know more? [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DataGrid.xml]DataGrid[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Permutations.xml]Permutations[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Properties.xml]Properties[/url] and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.History.xml]Undo/Redo[/url]</p>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="DocCommands">
+        <p>Using these buttons you can save and export the current document. You can also quickly undo/redo actions.</p>
+    </section>
+    <section name="View">
+        <p>With the view menu you can change the preview mesh, shading style, and IBL environment.</p>
+        <p>Supporting shading styles are Rough-Metal, Rough-Specular, Glossy-Metal, and Glossy-Specular.</p>
+        <p>On higher performing machines you can also turn on displacement mapping to view your relief maps.</p>
+    </section>
+    <section name="Expand">
+        <p>Expands the [b]Node Canvas[/b] or [b]Viewport[/b] view to fill the whole window.</p>
+    </section>
+    <section name="Viewport">
+        <p>Use the [b]W S A D[/b] keys to move the camera along the view plane. Use the [b]E[/b] and [b]C[/b] keys to move it up and down.</p>
+        <p>Hold the [b]RIGHT MOUSE[/b] button down to orbit the camera.</p>
+        <p>Hold the [b]CTRL + RIGHT MOUSE[/b] button down to turn the camera in place.</p>
+        <p>Hold the [b]MIDDLE MOUSE[/b] button down to dolly the camera forward and backward.</p>
+    </section>
+    <section name="NodePalette">
+        <p>You can drag nodes from the [b]Node Palette[/b] onto the [b]Node Canvas[/b] to create new nodes.</p>
+    </section>
+    <section name="AuxTabs">
+        <p>The auxilary tabs provide extra information about the program and your selections.</p>
+        <p>They're used to view message logs, inspect the properties of multiple objects, and view permutations.</p>
+    </section>
+    <section name="Properties">
+        <p>The properties panel is where you'll be doing most of your editing of the settings of the nodes in the [b]Node Canvas[/b].</p>
+        <p>In the same set of tabs is the [b]History[/b] tab that contains the undo/redo history of the current document.</p>
+    </section>
+    <section name="Documents">
+        <p>Opened documents can be closed and switched through the popup menu here.</p>
+        <p>The number indicates how many documents are opened.</p>
+    </section>
+    <section name="Routes">
+        <p>You can create manual routes for nodes by holding down [b]ALT[/b] and clicking on the connector line.</p>
+        <p>These route handles can be dragged around freely to organize your graph.</p>
+        <p>They can be removed by double clicking on the handle.</p>
+    </section>
+    <section name="Selected">
+        <p>Selected nodes and connectors will be bright yellow.</p>
+        <p>You can hold down [b]CTRL[/b] and click on multiple nodes/connectors to select many of them.</p>
+        <p>You can also hold down [b]SHIFT[/b] then click and drag a box selector to select multiple nodes.</p>
+        <p>Selections can be cut, copied, moved, or deleted.</p>
+    </section>
+    <section name="Canvas">
+        <p>The [b]Node Canvas[/b] can be panned by clicking and dragging.</p>
+        <p>You can zoom in and out with the [b]MIDDLE MOUSE WHEEL[/b] as well as the [b]+[/b] and [b]-[/b] keys.</p>
+        <p>Press the [b]HOME[/b] key to return the center of the graph.</p>
+        <p>The [b]ARROW[/b] keys will pan the canvas, hold shift to pan more quickly.</p>
+    </section>
+</help>

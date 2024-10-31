@@ -1,0 +1,527 @@
+﻿<UserControl x:Class="SprueKit.Controls.SceneTree"
+             x:Name="thisControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Controls"
+             xmlns:sprue="clr-namespace:SprueKit.Data"
+             xmlns:convert="clr-namespace:SprueKit.Data.Converters"
+             xmlns:behave="clr-namespace:SprueKit.Behaviors"
+             xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <TreeView x:Name="tree" ItemsSource="{Binding}" SelectedItemChanged="tree_SelectedItemChanged" KeyUp="tree_KeyUp"
+              dd:DragDrop.IsDragSource="True" 
+              dd:DragDrop.IsDropTarget="True" 
+              dd:DragDrop.DropHandler="{Binding ElementName=thisControl}" 
+              dd:DragDrop.DragHandler="{Binding ElementName=thisControl}"
+              TreeViewItem.Expanded="tree_Expanded" 
+              TreeViewItem.Collapsed="tree_Expanded">
+
+        <TreeView.CommandBindings>
+            <CommandBinding Command="ApplicationCommands.Copy" Executed="onCopy"/>
+            <CommandBinding Command="ApplicationCommands.Paste" Executed="onPaste" CanExecute="canPaste"/>
+        </TreeView.CommandBindings>
+        <!--<TreeView.ItemContainerStyle>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="IsExpanded" Value="{Binding Expanded}" />
+            </Style>
+        </TreeView.ItemContainerStyle>-->
+
+        <TreeView.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+            <convert:InvertBooleanToVisibilityConverter x:Key="InvertBoolToVis" />
+            <convert:TypeOfVisibilityConverter x:Key="VisibleIfType" />
+            <local:SceneTreeIconConverter x:Key="SceneTreeIcons" />
+
+            <Style x:Key="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="{x:Type TreeViewItem}">
+                <Style.Triggers>
+                    <Trigger Property="behave:TreeViewMultipleSelectionAttached.IsItemSelected" Value="True">
+                        <Setter Property="Background" Value="CornflowerBlue" />
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="IsExpanded" Value="{Binding Expanded}" />
+                <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
+            </Style>
+
+            <!-- Model based pieces -->
+
+            <!-- Sprue Model -->
+            <HierarchicalDataTemplate DataType="{x:Type sprue:SprueModel}" ItemsSource="{Binding FlatChildren}">
+                <StackPanel Orientation="Horizontal" Tag="{Binding}">
+                    <Image Margin="0,0,3,0" Source="{Binding Converter={StaticResource SceneTreeIcons}}" Width="16" Height="16"/>
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" Tag="{Binding}">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="true">
+                                        <Setter Property="Foreground" Value="Yellow" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <Label Content="Clipboard Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                                <MenuItem Header="Paste" Click="onPaste" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                    <MenuItem.Icon>
+                                        <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/paste_white.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            <Separator />
+
+                            <Label Content="Modeling Pieces" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Simple Piece" Click="onNewSimplePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=SimplePiece}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Chain Piece" Click="onNewSpinePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ChainPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Reference" Click="onNewReference" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=InstancePiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Mesh" Click="onNewMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ModelPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Marker" Click="onNewMarker" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=MarkerPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <Label Content="Texture Projectors" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Decal Projector" Click="onNewDecal" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DecalTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Box Projector" Click="onNewBoxProjector" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=BoxTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Cylinder Projector" Click="onNewCylinder" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=CylinderTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Decal Strip Projector" Click="onNewDecalStrip" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                            <MenuItem Header="Hemisphere Projector" Click="onNewHemisphere" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DomeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Gradient Map" Click="onNewGradientMap" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=GradientTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Color Cube" Click="onNewColorCube" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ColorCubeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Regenerate Mesh" Click="onRegenerateMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+            <!-- Chain Piece -->
+            <HierarchicalDataTemplate DataType="{x:Type sprue:ChainPiece}" ItemsSource="{Binding FlatChildren}">
+                <StackPanel Orientation="Horizontal" Tag="{Binding}">
+                    <Image Margin="0,0,3,0" Source="{Binding Converter={StaticResource SceneTreeIcons}}" Width="16" Height="16"/>
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" Tag="{Binding}">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="true">
+                                        <Setter Property="Foreground" Value="Yellow" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Click="onDelete" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" Visibility="{Binding IsSprueModel, Converter={StaticResource InvertBoolToVis}, FallbackValue=Collapsed}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/icon_remove_red.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Clipboard Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Copy" Click="onCopy" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/copy_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Paste" Click="onPaste" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/paste_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Chain Piece Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Add Bone" Click="onAddChainBone" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="pack://application:,,,/SprueKit;component/Images/icon_insert_after.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Modeling Pieces" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Simple Piece" Click="onNewSimplePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=SimplePiece}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Chain Piece" Click="onNewSpinePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ChainPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Reference" Click="onNewReference" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=InstancePiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Mesh" Click="onNewMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ModelPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Marker" Click="onNewMarker" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=MarkerPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <Label Content="Texture Projectors" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Decal Projector" Click="onNewDecal" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DecalTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Box Projector" Click="onNewBoxProjector" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=BoxTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Cylinder Projector" Click="onNewCylinder" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=CylinderTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Decal Strip Projector" Click="onNewDecalStrip" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                            <MenuItem Header="Hemisphere Projector" Click="onNewHemisphere" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DomeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Gradient Map" Click="onNewGradientMap" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=GradientTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Color Cube" Click="onNewColorCube" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ColorCubeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Regenerate Mesh" Click="onRegenerateMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+            
+            <!-- Chain Bone -->
+            <HierarchicalDataTemplate DataType="{x:Type sprue:ChainPiece+ChainBone}" ItemsSource="{Binding FlatChildren}">
+                <StackPanel Orientation="Horizontal" Tag="{Binding}">
+                    <Image Margin="0,0,3,0" Source="{Binding Converter={StaticResource SceneTreeIcons}}" Width="16" Height="16"/>
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" Tag="{Binding}">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="true">
+                                        <Setter Property="Foreground" Value="Yellow" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Click="onDelete" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" Visibility="{Binding IsSprueModel, Converter={StaticResource InvertBoolToVis}, FallbackValue=Collapsed}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/icon_remove_red.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Clipboard Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Copy" Click="onCopy" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/copy_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Paste" Click="onPaste" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/paste_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Chain Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Add Bone After" Click="onAddBoneAfter" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="pack://application:,,,/SprueKit;component/Images/icon_insert_after.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Add Bone Before" Click="onAddBoneBefore" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="pack://application:,,,/SprueKit;component/Images/icon_insert_before.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Modeling Pieces" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Simple Piece" Click="onNewSimplePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=SimplePiece}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Chain Piece" Click="onNewSpinePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ChainPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Reference" Click="onNewReference" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=InstancePiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Mesh" Click="onNewMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ModelPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Marker" Click="onNewMarker" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=MarkerPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <Label Content="Texture Projectors" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Decal Projector" Click="onNewDecal" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DecalTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Box Projector" Click="onNewBoxProjector" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=BoxTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Cylinder Projector" Click="onNewCylinder" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=CylinderTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Decal Strip Projector" Click="onNewDecalStrip" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                            <MenuItem Header="Hemisphere Projector" Click="onNewHemisphere" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DomeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Gradient Map" Click="onNewGradientMap" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=GradientTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Color Cube" Click="onNewColorCube" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ColorCubeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Regenerate Mesh" Click="onRegenerateMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+            </HierarchicalDataTemplate>            
+            
+           
+            
+            <!-- Most Pieces -->
+            <HierarchicalDataTemplate DataType="{x:Type sprue:SpruePiece}" ItemsSource="{Binding FlatChildren}">
+                <StackPanel Orientation="Horizontal" Tag="{Binding}">
+                    <Image Margin="0,0,3,0" Source="{Binding Converter={StaticResource SceneTreeIcons}}" Width="16" Height="16"/>
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" Tag="{Binding}">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="true">
+                                        <Setter Property="Foreground" Value="Yellow" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Click="onDelete" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" Visibility="{Binding IsSprueModel, Converter={StaticResource InvertBoolToVis}, FallbackValue=Collapsed}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/icon_remove_red.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Clipboard Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Copy" Click="onCopy" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/copy_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Paste" Click="onPaste" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/paste_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Modeling Pieces" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Simple Piece" Click="onNewSimplePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=SimplePiece}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Chain Piece" Click="onNewSpinePiece" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ChainPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Reference" Click="onNewReference" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=InstancePiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Mesh" Click="onNewMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ModelPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Marker" Click="onNewMarker" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=MarkerPiece}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <Label Content="Texture Projectors" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Decal Projector" Click="onNewDecal" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DecalTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Box Projector" Click="onNewBoxProjector" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=BoxTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Cylinder Projector" Click="onNewCylinder" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=CylinderTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Decal Strip Projector" Click="onNewDecalStrip" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                            <MenuItem Header="Hemisphere Projector" Click="onNewHemisphere" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=DomeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Gradient Map" Click="onNewGradientMap" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=GradientTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Color Cube" Click="onNewColorCube" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Source="{Binding Converter={StaticResource SceneTreeIcons}, ConverterParameter=ColorCubeTextureComponent}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem Header="Regenerate Mesh" Click="onRegenerateMesh" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+            
+            <!-- Component Pieces -->
+            <HierarchicalDataTemplate DataType="{x:Type sprue:SprueComponent}" ItemsSource="{Binding FlatChildren}">
+                <StackPanel Orientation="Horizontal" Tag="{Binding}">
+                    <Image Margin="0,0,3,0" Source="{Binding Converter={StaticResource SceneTreeIcons}}" Width="16" Height="16"/>
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" Tag="{Binding}" Foreground="LimeGreen">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="true">
+                                        <Setter Property="Foreground" Value="Yellow" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Click="onDelete" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" Visibility="{Binding IsSprueModel, Converter={StaticResource InvertBoolToVis}, FallbackValue=Collapsed}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/icon_remove_red.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator />
+
+                            <Label Content="Clipboard Actions" IsEnabled="False" FontWeight="Bold" HorizontalAlignment="Center" />
+                            <MenuItem Header="Copy" Click="onCopy" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}">
+                                <MenuItem.Icon>
+                                    <Image MaxWidth="16" MaxHeight="16" Margin="-2" Source="pack://application:,,,/SprueKit;component/Images/copy_white.png" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+        </TreeView.Resources>
+    </TreeView>
+</UserControl>

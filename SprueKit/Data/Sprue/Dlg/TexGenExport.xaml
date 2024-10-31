@@ -1,0 +1,28 @@
+﻿<mui:ModernDialog x:Class="SprueKit.Dlg.Sprue.TexGenExport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SprueKit.Dlg.Sprue"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        mc:Ignorable="d"
+        Title="Export Texture Graph" Height="300" Width="300">
+    <Grid VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="Format" Grid.Row="0" VerticalAlignment="Center" />
+        <ComboBox x:Name="exporterCombo" Grid.Column="1" Grid.Row="0" SelectedIndex="0">
+            <ComboBoxItem Name="png">PNG</ComboBoxItem>
+            <ComboBoxItem Name="tga">TGA</ComboBoxItem>
+            <ComboBoxItem Name="jpg">JPG</ComboBoxItem>
+            <ComboBoxItem Name="dds">DDS</ComboBoxItem>
+            <ComboBoxItem Name="hdr">HDR (16 bit)</ComboBoxItem>
+        </ComboBox>
+    </Grid>
+</mui:ModernDialog>

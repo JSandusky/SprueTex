@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="SprueKit.Pages.LaunchScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Pages"
+             xmlns:convert="clr-namespace:SprueKit.Controls.Converters"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:sprue="clr-namespace:SprueKit"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             VisualEdgeMode="Aliased">
+    <UserControl.Resources>
+        <sprue:IntVisibilityConverter x:Key="IntVisibilityConverter" />
+        <convert:InvertedBoolToVisibilityConverter x:Key="InvertBoolConv" />
+        <BooleanToVisibilityConverter x:Key="BoolConv" />
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,-30,0,60" HorizontalAlignment="Center">
+                <Label Content="SprueTex" FontSize="48" FontWeight="Bold" />
+                <Label Content="v1.1" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <ItemsControl x:Name="infoStack" ItemsSource="{Binding}" Visibility="{Binding Path=Count,Converter={StaticResource IntVisibilityConverter } }" Margin="0,0,0,20">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Visibility="{Binding ShouldShow, Converter={StaticResource InvertBoolConv}}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <mui:BBCodeBlock BBCode="{Binding Text}" />
+                                    <mui:BBCodeBlock BBCode="{Binding Cmd}" Grid.Column="1"/>
+                                    <Label Name="removeNewsItem" Content="X" Foreground="Red" IsHitTestVisible="True" Grid.Column="2" MouseDown="removeNewsItem_MouseDown" Tag="{Binding}" Margin="15,0,0,5" Cursor="Hand" FontWeight="Bold" Visibility="{Binding CanReject, Converter={StaticResource BoolConv}}"/>
+                                </Grid>
+                                <Separator />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel Margin="20,0" MinWidth="160">
+                <Label Content="Projects" />
+                <Separator />
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="btnOpenFile" Content="Open File" Style="{StaticResource StyledButton}" Click="btnOpenProject_Click" ToolTip="Open an existing file"/>
+                </StackPanel>
+                <Label Content="Recent" />
+                <StackPanel Name="recentFiles"/>
+            </StackPanel>
+            <StackPanel Margin="20,0" MinWidth="160">
+                <Label Content="Create New" />
+                <Separator />
+                <ItemsControl x:Name="newDocsItems">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Button Name="btnCreateNewDoc" Tag="{Binding}" Content="{Binding DocumentName}" Click="btnCreateNewDoc_Click" />
+                                <Button Name="btnCreateNewTemplate" Tag="{Binding}" Content="From Template" Click="btnCreateNewTemplate_Click" Margin="0,4,0,4"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+            <StackPanel Margin="20,0" MinWidth="160">
+                <Label Content="Help and Tutorials" />
+                <Separator />
+                <MenuItem Name="menuQuickStart" Header="Quick Start Quide" Margin="2" Click="menuQuickStart_Click" />
+                <MenuItem Name="menuManual" Header="Manual" Margin="2" Click="menuManual_Click"/>
+                <!--<MenuItem Name="menuVideos" Header="Video Tutorials" Margin="2" Click="menuVideos_Click" />-->
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="20, 0">
+            <Label Content="Reports" />
+            <Separator />
+            <WrapPanel Orientation="Horizontal" x:Name="reportStack" HorizontalAlignment="Left" MaxWidth="550">
+                <!--"<Button Name="btnModelReport" Content="Models Report" Style="{StaticResource StyledButton}" Margin="2"/>
+                <Button Name="btnTextureReport" Content="Texture Graph Report"  Style="{StaticResource StyledButton}" Margin="2"/>
+                <Button Name="btnAnimReport" Content="Animation Mapping Report"  Style="{StaticResource StyledButton}" Margin="2"/>-->
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

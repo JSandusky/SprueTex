@@ -1,0 +1,44 @@
+v1.0.1 Change Log
+	- CHANGE: Copying nodes now implicitly copies the connections between them
+		- Justification: when copying multiple nodes it is unlikely that the desired result is to copy the nodes without the connectivity between them, this change removes the need to manually select the connections as well. Selecting connections is time consuming.
+	- CHANGE: Comment boxes now start with a randomized color
+		- Use of comment boxes is to delineate sub-parts of the graph, differing color only makes sense
+		- When using a conventions based workflow the color still had to be adjusted before
+			- Such as setting to 128,128,255 to indicate that part of the graph is all about the normal map
+	- NEW FEATURE: Prefabs, from v1.1 schedule
+		- Equivalent to saving "copies" for later use
+		- Program requires write permission to its Prefabs folder next to the EXE
+		- Select multiple nodes
+		- Right-Click for context menu
+		- Select "Make into prefab"
+		- Give the prefab a name
+			- Use "/" to automatically put it into a folders (ie. Color Notes/Two Part Recolor)
+		- Prefab will be saved into Prefabs folder
+		- Prefabs are listed under "Prefabs" in the Node Palette tree (below the 3d view)
+		- Drag-and-drop the desired prefab onto the Node canvas to insert it
+	- NEW FEATURE: Surround with Comment Box
+		- Select one or more nodes
+		- Right-click on a node and select "Surround with Comment Box" command
+	- BUG FIX: comment boxes can now be deleted
+		- Right-click on title or description in the Node Canvas for the context menu
+	- BUG FIX: node 'jumping' when starting to move a node while a context-menu is opened
+	- CHANGE: added -capture switch to commandline
+		- For use when the pipe or capture used does not handle console rewriting well
+v1.0.2 Change Log
+	- NEW TEXTURE CHANNEL: Ambient occlusion
+		- Only applies to IBL and ambient term
+	- NEW TEXTURE CHANNEL: Emmissive mask
+		- Areas in emissive mask will be full-bright
+	- NEW TEXTURE CHANNEL: subsurface color and subsurface "depth"
+		- Uses wrapped half-vector approximation
+	- NEW NODE: Faux-light baker with LCSM relax option
+		- Bakes a directional light into a texture
+		- LCSM blur option soften the hardness of the light, but be problematic around poorly placed UV seams
+	- NEW NODE: Uber-noise, from v1.1 schedule
+		- Flexible derivative based noise
+	- NEW NODE: Gabor-noise, from v1.2 schedule
+		- Banded convolution noise
+	- NEW NODE: Octave Sum
+		- Performs a gain driven lacunarity+octave sum on any input
+	- BUG FIX: Baker nodes were not properly updating their previews when the model was changed
+	- BUG FIX: Newly created output nodes start with an unused value, only if all available channels have been used will they return to defaulting as 'Diffuse'

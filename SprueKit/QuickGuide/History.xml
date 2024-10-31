@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/History.png" width="434" height="766">
+    <map name="Images/help/History.png">
+        <area target="" alt="EditItems" title="EditItems" href="" coords="24,78,280,112" shape="rect"/>
+        <area target="" alt="RemovedItems" title="RemovedItems" href="" coords="24,256,378,292" shape="rect" />
+        <area target="" alt="NewItems" title="NewItems" href="" coords="24,396,368,438" shape="rect" />
+    </map>
+    <footer>
+        <p>The [b]History[/b] tab shows the history of the current document. Using the context menu you can undo/redo actions here.</p>
+        <p>The current location in the stack will be prefixed with [b]>>[/b].</p>
+        <p>Would you like to know more? [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Properties.xml]Properties[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Permutations.xml]Permutations[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DataGrid.xml]DataGrid[/url]</p>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="EditItems">
+        <p>Edits to nodes appear with [color=Yellow]yellow pencil[/color] icons.</p>
+    </section>
+    <section name="RemovedItems">
+        <p>Deletions and removal of nodes/connections appear with a [color=Red]red trashcan[/color].</p>
+    </section>
+    <section name="NewItems">
+        <p>Actions for the creation of new nodes and connections have a [color=LimeGreen]green plus[/color] icon.</p>
+    </section>
+</help>

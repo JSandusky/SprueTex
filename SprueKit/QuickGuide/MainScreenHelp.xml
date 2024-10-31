@@ -1,0 +1,44 @@
+﻿<help image="Images/help/LaunchScreen.png" width="1275" height="960">
+    <map name="Images/help/LaunchScreen.png">
+        <area target="" alt="TopLeftMenu" title="TopLeftMenu" href="" coords="6,7,247,45" shape="rect" />
+        <area target="" alt="TopRightMenu" title="TopRightMenu" href="" coords="934,5,1112,47" shape="rect" />
+        <area target="" alt="Notifications" title="Notifications" href="" coords="132,399,1123,478" shape="rect" />
+        <area target="" alt="OpenRecent" title="OpenRecent" href="" coords="168,487,463,645" shape="0" />
+        <area target="" alt="CreateNew" title="CreateNew" href="" coords="472,487,756,645" shape="0" />
+        <area target="" alt="Help" title="Help" href="" coords="763,487,1096,645" shape="0" />
+        <area target="" alt="Reports" title="Reports" href="" coords="166,663,1072,728" shape="0" />
+    </map>
+    <footer>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="TopLeftMenu">
+        <p>Clicking on the [b]SprueTex[/b] title from anywhere in the application will take you back to this screen.</p>
+        <p>When you have open documents you can switch between them and close them with the popup-menu.</p>
+        <p>The [b]Quick Guide[/b] command will open this window with the relevant help information for what you're currently doing in the program. The default shortcut for this is CTRL + H</p>
+    </section>
+    <section name="TopRightMenu">
+        <p>Selecting [b]Plugins[/b] will show you a list of all of the installed plugins.</p>
+        <p>See the manual for information on developing and installing plugins.</p>
+        <p>[b]Settings[/b] will take you to the settings screen where you can configure options such as shortcut keys and custom names for flags.</p>
+    </section>
+    <section name="Notifications">
+        <p>When an update or important notice is detected the message will appear here.</p>
+        <p>You can follow the link in the message or simply clear out using the [b]X[/b] button.</p>
+    </section>
+    <section name="OpenRecent">
+        <p>The [b]Open File[/b] button lets you pick a file to open, the default shortcut for this is [b]CTRL + O[/b].</p>
+        <p>Your recently opened files (up to 5 of them) will be displayed just below the 'Open File' button for quick access.</p>
+    </section>
+    <section name="CreateNew">
+        <p>The [b]Create New[/b] button will open a brand new document. This may take a few seconds if this is the first document you're opening since starting the program.</p>
+        <p>Aside from empty files you can also start a new file from a [b]'template'[/b]. See the manual on how to create your own templates (it's as easy as copy and paste).</p>
+    </section>
+    <section name="Help">
+        <p>Not only is there this quick guide but there also video tutorials and the wordy manual.</p>
+        <p>Keep your eyes out for future tutorials.</p>
+    </section>
+    <section name="Reports">
+        <p>You can generate reports to get a breakdown of a file as well as for comparing multiple files.</p>
+        <p>They're extremely useful for making sure that all of your textures are stylistically consistent.</p>
+    </section>
+</help>

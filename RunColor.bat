@@ -1,0 +1,1 @@
+start "C:\Program Files\JPSoft\TCCLE14x64\tcc.exe" "C:\dev\Sprue\ColorizeIcons.bat"

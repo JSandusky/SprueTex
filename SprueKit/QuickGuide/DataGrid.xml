@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/DataGrid.png" width="1264" height="296">
+    <map name="Images/help/DataGrid.png">
+        <area target="" alt="ObjectType" title="ObjectType" href="" coords="4,38,426,78" shape="rect" />
+        <area target="" alt="Sorting" title="Sorting" href="" coords="926,76,1056,116" shape="rect" />
+        <area target="" alt="Editing" title="Editing" href="" coords="109,109,535,147" shape="rect" />
+    </map>
+    <footer>
+        <p>The [b]DataGrid[/b] allows the values of multiple nodes of the type to be compared and edited.</p>
+        <p>Would you like to know more? [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Properties.xml]Properties[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Permutations.xml]Permutations[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.History.xml]Undo/Redo[/url]</p>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="ObjectType">
+        <p>Use the drop-down box to select the type of object to view in the [b]DataGrid[/b].</p>
+    </section>
+    <section name="Sorting">
+        <p>Many fields can be sorted in ascending or descending order. Text, single numbers, options, and checkboxes can be sorted.</p>
+    </section>
+    <section name="Editing">
+        <p>To edit the value of a field in the [b]DataGrid[/b] double-click on the cell.</p>
+        <p>Some fields like checkboxes and drop-down lists do not require double-clicking and can be used in place.</p>
+    </section>
+</help>

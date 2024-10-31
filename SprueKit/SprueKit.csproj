@@ -1,0 +1,1350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7448FF3C-0B33-4B36-851A-5E99946E614F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SprueKit</RootNamespace>
+    <AssemblyName>SprueTex</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SprueKit.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Costura, Version=1.6.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.1.6.2\lib\dotnet\Costura.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GongSolutions.Wpf.DragDrop, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\gong-wpf-dragdrop.1.1.0\lib\net45\GongSolutions.Wpf.DragDrop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.3\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoGame.Extended, Version=0.6.602.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.0.6.602\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SpicyTaco.AutoGrid, Version=1.2.29.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpicyTaco.AutoGrid.1.2.29\lib\net40\SpicyTaco.AutoGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.13, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.8.0.13\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.Common, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.1.6.6.1\lib\net45\SuperSocket.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.Facility, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.1.6.6.1\lib\net45\SuperSocket.Facility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.SocketBase, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.1.6.6.1\lib\net45\SuperSocket.SocketBase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.SocketEngine, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.Engine.1.6.6.1\lib\net45\SuperSocket.SocketEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.SocketService, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.Engine.1.6.6.1\lib\net45\SuperSocket.SocketService.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.WebSocket, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.WebSocket.1.6.6.1\lib\net45\SuperSocket.WebSocket.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.0\lib\net45\WebSocket4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppCommandLine.cs" />
+    <Compile Include="AppIPC.cs" />
+    <Compile Include="AppShortCuts.cs" />
+    <Compile Include="BaseClass.cs" />
+    <Compile Include="Behaviors\MultiSelectTree.cs" />
+    <Compile Include="Behaviors\TreeBindableSelectedItemBehavior.cs" />
+    <Compile Include="Commands\CollectionCmd.cs" />
+    <Compile Include="Commands\CommandInfo.cs" />
+    <Compile Include="Commands\GraphUndo.cs" />
+    <Compile Include="Commands\IQuickActionSource.cs" />
+    <Compile Include="Commands\MacroCommand.cs" />
+    <Compile Include="Commands\ShortCut.cs" />
+    <Compile Include="Commands\UndoRedoCmd.cs" />
+    <Compile Include="Commands\UndoStack.cs" />
+    <Compile Include="Composition.cs" />
+    <Compile Include="ContentLoader.cs" />
+    <Compile Include="Controls\AppWindow.xaml.cs">
+      <DependentUpon>AppWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BaseCurveCtrl.cs" />
+    <Compile Include="Controls\CatmulRomCurveCtrl.cs" />
+    <Compile Include="Controls\CheckboxMatrix.cs" />
+    <Compile Include="Controls\Code\BraceFoldingStrategy.cs" />
+    <Compile Include="Controls\Code\BraceHighlighter.cs" />
+    <Compile Include="Controls\Code\BreakpointMargin.cs" />
+    <Compile Include="Controls\Code\FindPanel.cs" />
+    <Compile Include="Controls\Code\FoldingStrategy.cs" />
+    <Compile Include="Controls\Code\Intellisense\CompletionData.cs" />
+    <Compile Include="Controls\Code\Intellisense\DepthScanner.cs" />
+    <Compile Include="Controls\Code\Intellisense\DumpParser.cs" />
+    <Compile Include="Controls\Code\Intellisense\IntellisenseHelper.cs" />
+    <Compile Include="Controls\Code\Intellisense\IntellisenseSource.cs" />
+    <Compile Include="Controls\Code\Intellisense\NameResolver.cs" />
+    <Compile Include="Controls\Code\Intellisense\OverloadProvider.cs" />
+    <Compile Include="Controls\Code\Intellisense\Parsers\ParserBase.cs" />
+    <Compile Include="Controls\Code\Intellisense\Tokenizer\Token.cs" />
+    <Compile Include="Controls\Code\Intellisense\Tokenizer\Tokenizer.cs" />
+    <Compile Include="Controls\Code\Intellisense\Tokenizer\TokenizerUtil.cs" />
+    <Compile Include="Controls\Code\Intellisense\TypeData.cs" />
+    <Compile Include="Controls\Code\LineHighlighter.cs" />
+    <Compile Include="Controls\Code\SearchResultBackgroundRenderer.cs" />
+    <Compile Include="Controls\ColorCurveCtrl.cs" />
+    <Compile Include="Controls\ColorCurvesEditor.xaml.cs">
+      <DependentUpon>ColorCurvesEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CommandInfoRepeater.xaml.cs">
+      <DependentUpon>CommandInfoRepeater.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Converters\DefaultPropertyConverter.cs" />
+    <Compile Include="Controls\Converters\GenericConverter.cs" />
+    <Compile Include="Controls\Converters\GenericTreeTextConverter.cs" />
+    <Compile Include="Controls\Converters\UriTailConverter.cs" />
+    <Compile Include="Controls\Converters\XnaColorConverters.cs" />
+    <Compile Include="Controls\GradientRampEditor.xaml.cs">
+      <DependentUpon>GradientRampEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphParts\GraphBoxControl.xaml.cs">
+      <DependentUpon>GraphBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphParts\RouteThumb.xaml.cs">
+      <DependentUpon>RouteThumb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphParts\ShaderGraphNode.cs" />
+    <Compile Include="Controls\GraphParts\TextureGraphNode.cs" />
+    <Compile Include="Controls\ImageMap.xaml.cs">
+      <DependentUpon>ImageMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PermutationsDataGrid.xaml.cs">
+      <DependentUpon>PermutationsDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PropertiesDataGrid.xaml.cs">
+      <DependentUpon>PropertiesDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DocumentFrame.cs" />
+    <Compile Include="Controls\DocumentList.xaml.cs">
+      <DependentUpon>DocumentList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DocumentTabContainer.xaml.cs">
+      <DependentUpon>DocumentTabContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Editors\FieldEditorBuilder.cs" />
+    <Compile Include="Controls\EnumToggleButton.cs" />
+    <Compile Include="Controls\FileBrowser.xaml.cs">
+      <DependentUpon>FileBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileControl.xaml.cs">
+      <DependentUpon>FileControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FlagsMatrix.xaml.cs">
+      <DependentUpon>FlagsMatrix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GenericDataEditor.xaml.cs">
+      <DependentUpon>GenericDataEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GenericTreeControl.xaml.cs">
+      <DependentUpon>GenericTreeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphControl.xaml.cs">
+      <DependentUpon>GraphControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphParts\ConnectorShape.cs" />
+    <Compile Include="Controls\GraphParts\GraphNode.xaml.cs">
+      <DependentUpon>GraphNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphParts\GraphSocket.xaml.cs">
+      <DependentUpon>GraphSocket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IMTree.cs" />
+    <Compile Include="Controls\IVirtualControl.cs" />
+    <Compile Include="Controls\KeyTextBox.cs" />
+    <Compile Include="Controls\LayoutExt.cs" />
+    <Compile Include="Controls\LogViewer.xaml.cs">
+      <DependentUpon>LogViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Marquee.cs" />
+    <Compile Include="Controls\MaterialList.xaml.cs">
+      <DependentUpon>MaterialList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MeshList.xaml.cs">
+      <DependentUpon>MeshList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ModelControl.xaml.cs">
+      <DependentUpon>ModelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumericTextBox.cs" />
+    <Compile Include="Controls\PathListControl.xaml.cs">
+      <DependentUpon>PathListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PermutationsDlg.xaml.cs">
+      <DependentUpon>PermutationsDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PermutationsList.xaml.cs">
+      <DependentUpon>PermutationsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Properties.xaml.cs">
+      <DependentUpon>Properties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReflectivePage.xaml.cs">
+      <DependentUpon>ReflectivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResponseCurveCtrl.cs" />
+    <Compile Include="Controls\ResponseCurveEditor.xaml.cs">
+      <DependentUpon>ResponseCurveEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SceneTree.xaml.cs">
+      <DependentUpon>SceneTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SculptPaint\ModelTree.cs" />
+    <Compile Include="Controls\ShapeCanvas.xaml.cs">
+      <DependentUpon>ShapeCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SimpleGridSplitter.xaml.cs">
+      <DependentUpon>SimpleGridSplitter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TexGen\TextureGenTree.xaml.cs">
+      <DependentUpon>TextureGenTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Baking\MeshRasterizer.cs" />
+    <Compile Include="Data\Baking\RasterizerData.cs" />
+    <Compile Include="Data\CodeGen\BooleanNodes.cs" />
+    <Compile Include="Data\CodeGen\Compiler.cs" />
+    <Compile Include="Data\CodeGen\ConstantNodes.cs" />
+    <Compile Include="Data\CodeGen\ControlNodes.cs" />
+    <Compile Include="Data\CodeGen\MathNodes.cs" />
+    <Compile Include="Data\CodeGen\ScriptDebugger.cs" />
+    <Compile Include="Data\Converters\ExpanderConverter.cs" />
+    <Compile Include="Data\DefaultPool.cs" />
+    <Compile Include="Data\FontSpec.cs" />
+    <Compile Include="Data\Graph\GraphBox.cs" />
+    <Compile Include="Data\HalfEdgeMesh.cs" />
+    <Compile Include="Data\IKAnim\IKAnimDocument.cs" />
+    <Compile Include="Data\IKAnim\IKRig.cs" />
+    <Compile Include="Data\IKAnim\IKScene.cs" />
+    <Compile Include="Data\IPermutable.cs" />
+    <Compile Include="Data\HashCache.cs" />
+    <Compile Include="Data\MarchingSquares.cs" />
+    <Compile Include="Data\MeshEditor\EditableMesh.cs" />
+    <Compile Include="Data\MeshEditor\MeshBase.cs" />
+    <Compile Include="Data\MeshEditor\Zircon.cs" />
+    <Compile Include="Data\Processing\SkeletonBuilder.cs" />
+    <Compile Include="Data\PSBlend.cs" />
+    <Compile Include="Data\Reports.cs" />
+    <Compile Include="Data\Sprue\Reports\ModelReport.cs" />
+    <Compile Include="Data\Sprue\SprueSerialization.cs" />
+    <Compile Include="Data\TexGen\PaintNodes.cs" />
+    <Compile Include="Data\TexGen\ReliefNodes.cs" />
+    <Compile Include="Data\TexGen\TexGenSubGraph.cs" />
+    <Compile Include="Data\TexGen\TextureGraphReport.cs" />
+    <Compile Include="Data\ResourceCache.cs" />
+    <Compile Include="Data\Sculpt\ModelEditState.cs" />
+    <Compile Include="Data\Serialization.cs" />
+    <Compile Include="Data\ShaderGen\AutoGenerated.cs" />
+    <Compile Include="Data\ShaderGen\CodeGen.cs" />
+    <Compile Include="Data\ShaderGen\ConstantNodes.cs" />
+    <Compile Include="Data\ShaderGen\GraphSort.cs" />
+    <Compile Include="Data\ShaderGen\InputNodes.cs" />
+    <Compile Include="Data\ShaderGen\MathNodes.cs" />
+    <Compile Include="Data\ShaderGen\OutputNodes.cs" />
+    <Compile Include="Data\ShaderGen\Serialization_Autogenerated.cs" />
+    <Compile Include="Data\ShaderGen\ShaderCompiler.cs" />
+    <Compile Include="Data\ShaderGen\ShaderCompileTask.cs" />
+    <Compile Include="Data\ShaderGen\ShaderExt.cs" />
+    <Compile Include="Data\ShaderGen\ShaderGenCore.cs" />
+    <Compile Include="Data\ShaderGen\ShaderGenDocument.cs" />
+    <Compile Include="Data\ShaderGen\Swizzle.cs" />
+    <Compile Include="Data\ShapeGen\Occlusion.cs" />
+    <Compile Include="Data\ShapeGen\VolumePartitioner.cs" />
+    <Compile Include="Data\Sprue\BMeshTask.cs" />
+    <Compile Include="Data\Sprue\ComputeMeshingTask.cs" />
+    <Compile Include="Data\Sprue\CSGTask.cs" />
+    <Compile Include="Data\Sprue\FinalizationTask.cs" />
+    <Compile Include="Data\Sprue\SkeletonBuilderTask.cs" />
+    <Compile Include="Data\Sprue\TextureCompositeTask.cs" />
+    <Compile Include="Data\Sprue\TextureMapTask.cs" />
+    <Compile Include="Data\Sprue\UVTaskThekla.cs" />
+    <Compile Include="Data\TexGen\BakerNodes.cs" />
+    <Compile Include="Data\TexGen\BlurNodes.cs" />
+    <Compile Include="Data\TexGen\Caching.cs" />
+    <Compile Include="Data\TexGen\FilterNodes.cs" />
+    <Compile Include="Data\TexGen\GeneralNodes.cs" />
+    <Compile Include="Data\TexGen\GeneratorNodes.cs" />
+    <Compile Include="Data\TexGen\NormalMapNodes.cs" />
+    <Compile Include="Data\TexGen\Serialization.cs" />
+    <Compile Include="Data\TexGen\Serialization_Autogenerated.cs" />
+    <Compile Include="Data\TexGen\SubstanceLoader.cs" />
+    <Compile Include="Data\TexGen\TexGenRegenerateTask.cs" />
+    <Compile Include="Data\TexGen\TextureGenDocument.cs" />
+    <Compile Include="Data\TexGen\TilingNoise.cs" />
+    <Compile Include="Data\TexGen\ValueNodes.cs" />
+    <Compile Include="Data\TextureMap.cs" />
+    <Compile Include="DevCommands.cs" />
+    <Compile Include="DisposalQueue.cs" />
+    <Compile Include="Dlg\ExportImageDlg.xaml.cs">
+      <DependentUpon>ExportImageDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\ExportTexMeshDlg.xaml.cs">
+      <DependentUpon>ExportTexMeshDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\HelpWindow.xaml.cs">
+      <DependentUpon>HelpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\InfoDlg.xaml.cs">
+      <DependentUpon>InfoDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\PathFixupDlg.xaml.cs">
+      <DependentUpon>PathFixupDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\QuickAction.xaml.cs">
+      <DependentUpon>QuickAction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Sprue\Dlg\ExportDlg.xaml.cs">
+      <DependentUpon>ExportDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Sprue\Dlg\TexGenExport.xaml.cs">
+      <DependentUpon>TexGenExport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\ReadEulaDlg.xaml.cs">
+      <DependentUpon>ReadEulaDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\TexVariationDlg.xaml.cs">
+      <DependentUpon>TexVariationDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FourCC.cs" />
+    <Compile Include="GenericTreeObject.cs" />
+    <Compile Include="Graphics\Animate\AnimateView.cs" />
+    <Compile Include="Graphics\BRDF.cs" />
+    <Compile Include="Graphics\Controls\Timeline.cs" />
+    <Compile Include="Graphics\DebugDraw.cs" />
+    <Compile Include="Graphics\DebugMesh.cs" />
+    <Compile Include="Graphics\MaskTexture.cs" />
+    <Compile Include="Graphics\Materials\BoneWeightEffect.cs" />
+    <Compile Include="Graphics\Materials\PBREffect.cs" />
+    <Compile Include="Graphics\Materials\Skybox.cs" />
+    <Compile Include="Graphics\Materials\TexturedEffect.cs" />
+    <Compile Include="Graphics\Paint\PaintScene2D.cs" />
+    <Compile Include="Graphics\Paint\PaintScene3D.cs" />
+    <Compile Include="Graphics\Paint\PaintSceneBase.cs" />
+    <Compile Include="Graphics\Paint\PaintStrokeEffect.cs" />
+    <Compile Include="Graphics\Paint\PaintTexture.cs" />
+    <Compile Include="Graphics\Primitive.cs" />
+    <Compile Include="Graphics\Sculpt\SculptingView.cs" />
+    <Compile Include="Graphics\StrokeBatch.cs" />
+    <Compile Include="Graphics\TexGraph\ReliefViewport.cs" />
+    <Compile Include="Graphics\TexGraph\TexGraphViewport.cs" />
+    <Compile Include="ModalCapture.cs" />
+    <Compile Include="Pages\ReportsScreen.xaml.cs">
+      <DependentUpon>ReportsScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\Eula.xaml.cs">
+      <DependentUpon>Eula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\ShortCuts.xaml.cs">
+      <DependentUpon>ShortCuts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgressDlg\ProgressDialog.xaml.cs">
+      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressDlg\ProgressDialogResult.cs" />
+    <Compile Include="ProgressDlg\ProgressDialogSettings.cs" />
+    <Compile Include="ProgressDlg\WindowSettings.cs" />
+    <Compile Include="QuickGuide\IHelpSource.cs" />
+    <Compile Include="Settings\BitFieldNames.cs" />
+    <Compile Include="Settings\TextureGraphSettings.cs" />
+    <Compile Include="Tasks\ComputeTaskItem.cs" />
+    <Compile Include="UnitTests.cs" />
+    <Compile Include="Util\AutoDispose.cs" />
+    <Compile Include="Util\GifWriter.cs" />
+    <Compile Include="Util\HashHelper.cs" />
+    <Compile Include="Util\HelpBuilder.cs" />
+    <Compile Include="Util\ObjectSwitcheroo.cs" />
+    <Compile Include="Util\SerializationGenerator.cs" />
+    <Compile Include="Util\SetFromString.cs" />
+    <Compile Include="Util\SingleToggleButtonActive.cs" />
+    <Compile Include="Controls\TestScrollers.xaml.cs">
+      <DependentUpon>TestScrollers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextureMapEditor.xaml.cs">
+      <DependentUpon>TextureMapEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Timeline.cs" />
+    <Compile Include="Controls\UndoHistoryCtrl.xaml.cs">
+      <DependentUpon>UndoHistoryCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UriTextBox.cs" />
+    <Compile Include="Controls\VirtualScrollArea.xaml.cs">
+      <DependentUpon>VirtualScrollArea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BindingUtil.cs" />
+    <Compile Include="Data\Converters\ColorConverters.cs" />
+    <Compile Include="Data\Converters\EnumNameConverter.cs" />
+    <Compile Include="Data\Converters\ShapeVisibilityConverter.cs" />
+    <Compile Include="Data\Converters\UndoRedoConverter.cs" />
+    <Compile Include="Data\Converters\ValueConverterGroup.cs" />
+    <Compile Include="Data\Converters\VectorConverters.cs" />
+    <Compile Include="Data\DataExtensions.cs" />
+    <Compile Include="Data\DensityFunctions.cs" />
+    <Compile Include="Data\Sprue\DistortionPieces.cs" />
+    <Compile Include="Data\FileSystem.cs" />
+    <Compile Include="Data\Graph\Graph.cs" />
+    <Compile Include="Data\Graph\GraphConnection.cs" />
+    <Compile Include="Data\Graph\GraphDocument.cs" />
+    <Compile Include="Data\Graph\GraphNode.cs" />
+    <Compile Include="Data\Graph\GraphSocket.cs" />
+    <Compile Include="Data\MeshData.cs" />
+    <Compile Include="Data\Permutation.cs" />
+    <Compile Include="Data\Primitives.cs" />
+    <Compile Include="Data\Processing\NaiveSurfaceNets.cs" />
+    <Compile Include="Data\Processing\SurfacingData.cs" />
+    <Compile Include="Data\RasterImage.cs" />
+    <Compile Include="Data\Sprue\SceneHelpers.cs" />
+    <Compile Include="Data\Sculpt\PaintLayer.cs" />
+    <Compile Include="Data\Sculpt\ProjectionPaintLayer.cs" />
+    <Compile Include="Data\Sculpt\RasterPaintLayer.cs" />
+    <Compile Include="Data\Sculpt\SculptDocument.cs" />
+    <Compile Include="Data\Sprue\SprueModel.cs" />
+    <Compile Include="Data\Sprue\SprueModelDocument.cs" />
+    <Compile Include="Data\Sprue\BoneWeightTask.cs" />
+    <Compile Include="Data\Sprue\MeshingTask.cs" />
+    <Compile Include="Data\Sprue\SprueSelectionCommands.cs" />
+    <Compile Include="Data\Sprue\UVTask.cs" />
+    <Compile Include="Data\Sprue\TexturePieces.cs" />
+    <Compile Include="Data\Sprue\Texturing.cs" />
+    <Compile Include="Data\Sprue\Timeline.cs" />
+    <Compile Include="Data\Trig.cs" />
+    <Compile Include="Data\TripletCurve.cs" />
+    <Compile Include="Data\UriList.cs" />
+    <Compile Include="Data\Validators\FloatValidationRule.cs" />
+    <Compile Include="Dlg\ReflectiveDlg.xaml.cs">
+      <DependentUpon>ReflectiveDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\BaseScene.cs" />
+    <Compile Include="Graphics\Controls\GizmoControlBox.xaml.cs">
+      <DependentUpon>GizmoControlBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\Materials\ICommonEffect.cs" />
+    <Compile Include="Graphics\Materials\MatCapEffect.cs" />
+    <Compile Include="Graphics\Materials\NormalEffect.cs" />
+    <Compile Include="Graphics\Materials\UVChartEffect.cs" />
+    <Compile Include="Graphics\Materials\UVEffect.cs" />
+    <Compile Include="Graphics\Materials\WireFrameEffect.cs" />
+    <Compile Include="Graphics\SprueModel\UVScene.cs" />
+    <Compile Include="Graphics\ViewportDelegate.cs" />
+    <Compile Include="Dlg\ConfirmDlg.xaml.cs">
+      <DependentUpon>ConfirmDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\ErrorDlg.xaml.cs">
+      <DependentUpon>ErrorDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\InputDlg.xaml.cs">
+      <DependentUpon>InputDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\PluginDlg.xaml.cs">
+      <DependentUpon>PluginDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dlg\SaveIgnoreCancelDlg.xaml.cs">
+      <DependentUpon>SaveIgnoreCancelDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Document.cs" />
+    <Compile Include="ErrorHandler.cs" />
+    <Compile Include="Graphics\Camera.cs" />
+    <Compile Include="Graphics\Controllers\CameraController.cs" />
+    <Compile Include="Graphics\Controllers\ControlPointController.cs" />
+    <Compile Include="Graphics\Controllers\GizmoController.cs" />
+    <Compile Include="Graphics\DebugRenderer.cs" />
+    <Compile Include="Graphics\SprueModel\ModelScene.cs" />
+    <Compile Include="Graphics\Gizmo.cs" />
+    <Compile Include="Graphics\RenderHelpers.cs" />
+    <Compile Include="Graphics\SelectionColorer.cs" />
+    <Compile Include="Graphics\Visual3D.cs" />
+    <Compile Include="Graphics\VizAnim\CameraAnimations.cs" />
+    <Compile Include="IInitializable.cs" />
+    <Compile Include="IoC.cs" />
+    <Compile Include="Memento\Events\BaseEvent.cs" />
+    <Compile Include="Memento\Events\BatchEvent.cs" />
+    <Compile Include="Memento\Events\ElementAdditionEvent.cs" />
+    <Compile Include="Memento\Events\ElementIndexChangedEvent.cs" />
+    <Compile Include="Memento\Events\ElementRemovalEvent.cs" />
+    <Compile Include="Memento\Events\PropertyChangeEvent.cs" />
+    <Compile Include="Memento\Mementor.cs" />
+    <Compile Include="Memento\MementorChanged.cs" />
+    <Compile Include="Memento\MementorChangedEventArgs.cs" />
+    <Compile Include="Memento\MementorExtensions.cs" />
+    <Compile Include="Memento\MementorLocker.cs" />
+    <Compile Include="OneTimeOnly.cs" />
+    <Compile Include="Pages\DesignScreen.xaml.cs">
+      <DependentUpon>DesignScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LaunchScreen.xaml.cs">
+      <DependentUpon>LaunchScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsScreen.xaml.cs">
+      <DependentUpon>SettingsScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\BitSettingsPage.xaml.cs">
+      <DependentUpon>BitSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\Licenses.xaml.cs">
+      <DependentUpon>Licenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TextureGraphScreen.xaml.cs">
+      <DependentUpon>TextureGraphScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Platform.cs" />
+    <Compile Include="PluginManager.cs" />
+    <Compile Include="QuickGuide\QuickGuide.xaml.cs">
+      <DependentUpon>QuickGuide.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickGuide\QuickGuidePages.xaml.cs">
+      <DependentUpon>QuickGuidePages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectionContext.cs" />
+    <Compile Include="Settings\GeneralSettings.cs" />
+    <Compile Include="Settings\MeshingSettings.cs" />
+    <Compile Include="StyledButton.cs" />
+    <Compile Include="Data\Curves.cs" />
+    <Compile Include="Tasks\TaskItem.cs" />
+    <Compile Include="Tasks\TaskThread.cs" />
+    <Compile Include="Tracker\Changed.cs" />
+    <Compile Include="Tracker\CollectionChangedTrackedObject.cs" />
+    <Compile Include="Tracker\DualTrackedObject.cs" />
+    <Compile Include="Tracker\PropertyChangedTrackedObject.cs" />
+    <Compile Include="Tracker\TrackClassAttribute.cs" />
+    <Compile Include="Tracker\TrackConsequence.cs" />
+    <Compile Include="Tracker\TrackedObject.cs" />
+    <Compile Include="Tracker\Tracker.cs" />
+    <Compile Include="Tracker\TrackMemberAttribute.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="UtilityExt.cs" />
+    <Compile Include="Util\AppLifecycle.cs" />
+    <Compile Include="Util\CommonConverters.cs" />
+    <Compile Include="Util\FuncComparer.cs" />
+    <Compile Include="Util\Html.cs" />
+    <Compile Include="Util\ListSynchronizer.cs" />
+    <Compile Include="Util\MarginSetter.cs" />
+    <Compile Include="Util\PopupHelper.cs" />
+    <Compile Include="Util\PropertyHelpers.cs" />
+    <Compile Include="Util\SwizzleBuilder.cs" />
+    <Compile Include="Util\TypedCache.cs" />
+    <Compile Include="Util\TypeRandomizer.cs" />
+    <Compile Include="Util\UrhoModel.cs" />
+    <Compile Include="WPFExt.cs" />
+    <Compile Include="XmlExt.cs" />
+    <Compile Include="XNAExt.cs" />
+    <Page Include="Controls\AppWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ColorCurvesEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CommandInfoRepeater.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GradientRampEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GraphParts\GraphBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GraphParts\RouteThumb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ImageMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PermutationsDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PropertiesDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DocumentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DocumentTabContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FileBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FileControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FlagsMatrix.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GenericDataEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GenericTreeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GraphControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GraphParts\GraphNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GraphParts\GraphSocket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LogViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MaterialList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MeshList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ModelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PathListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PermutationsDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PermutationsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Properties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ReflectivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ResponseCurveEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SceneTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShapeCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SimpleGridSplitter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TestScrollers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TexGen\TextureGenTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextureMapEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UndoHistoryCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VirtualScrollArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\ConfirmDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\ErrorDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\ExportImageDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\ExportTexMeshDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\InfoDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\InputDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\PathFixupDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\PluginDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\QuickAction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\ReadEulaDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\ReflectiveDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\SaveIgnoreCancelDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Data\Sprue\Dlg\ExportDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Data\Sprue\Dlg\TexGenExport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dlg\TexVariationDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Graphics\Controls\GizmoControlBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\DesignScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LaunchScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReportsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\BitSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\Eula.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\Licenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings\ShortCuts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TextureGraphScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressDlg\ProgressDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuickGuide\QuickGuide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuickGuide\QuickGuidePages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Config\log4net.config" />
+    <None Include="Config\log4net.unix.config" />
+    <None Include="Content\Content.mgcb" />
+    <EmbeddedResource Include="Data\Sprue\DensityShader.cl" />
+    <EmbeddedResource Include="Data\Sprue\GenerateField.cl" />
+    <EmbeddedResource Include="Data\Sprue\SurfaceNetsShader.cl" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="supersocket.cmd" />
+    <None Include="supersocket.sh" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColorPickerLib\ColorPickerLib.csproj">
+      <Project>{e64ce47c-10a6-490e-b1b1-84f00fd6c1d2}</Project>
+      <Name>ColorPickerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FirstFloor.ModernUI\FirstFloor.ModernUI\FirstFloor.ModernUI.csproj">
+      <Project>{9a653a28-fe46-40e8-a14f-48b0e325165d}</Project>
+      <Name>FirstFloor.ModernUI</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame.Framework.WpfInterop\MonoGame.Framework.WpfInterop.csproj">
+      <Project>{809f0d79-aedc-4754-a213-fdbe97ccd6d6}</Project>
+      <Name>MonoGame.Framework.WpfInterop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PluginLib\PluginLib.csproj">
+      <Project>{f4e29e54-b770-4331-a44e-84e533806a51}</Project>
+      <Name>PluginLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SprueBindings\SprueBindings.vcxproj">
+      <Project>{e0a75ed0-70dd-410b-bfc2-3849e7333c6a}</Project>
+      <Name>SprueBindings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Thekla\projects\vc9\Thekla\Thekla.vcxproj">
+      <Project>{4fd27915-ebf0-4d23-b293-7367458ed755}</Project>
+      <Name>Thekla</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Code\Intellisense\Refactor\" />
+    <Folder Include="Controls\Code\Intellisense\Sources\" />
+    <Folder Include="Data\Sprue\Tasks\" />
+    <Folder Include="Graphics\ViewBars\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\QG.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\question-white.png" />
+    <Resource Include="Images\reset.png" />
+    <Resource Include="Images\ticket--arrow.png" />
+    <Resource Include="Images\ticket--plus.png" />
+    <Resource Include="Images\ticket.png" />
+    <Resource Include="Images\alert_white.png" />
+    <Resource Include="Images\alert_green.png" />
+    <Resource Include="Images\alert_yellow.png" />
+    <Resource Include="Images\alert_orange.png" />
+    <Resource Include="Images\alert_red.png" />
+    <Resource Include="Images\bug_white.png" />
+    <Resource Include="Images\bug_orange.png" />
+    <Resource Include="Images\bug_yellow.png" />
+    <Resource Include="Images\icon_add_green.png" />
+    <Resource Include="Images\icon_remove_red.png" />
+    <Resource Include="Images\icon_edit_yellow.png" />
+    <Resource Include="Images\icon_blend_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_box_shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_bone_attachment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_mesh_instance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_path.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_position_3d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_tool_button.png" />
+    <Resource Include="Images\godot\icon_tool_move.png" />
+    <Resource Include="Images\godot\icon_tool_pan.png" />
+    <Resource Include="Images\godot\icon_tool_rotate.png" />
+    <Resource Include="Images\godot\icon_tool_scale.png" />
+    <Resource Include="Images\godot\icon_tool_select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_world_environment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_visible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar\alert.png" />
+    <Resource Include="Images\appbar\bug.png" />
+    <Resource Include="Images\appbar\control.play.png" />
+    <Resource Include="Images\appbar\controller.snes.png" />
+    <Resource Include="Images\appbar\debug.step.into.png" />
+    <Resource Include="Images\appbar\debug.step.out.png" />
+    <Resource Include="Images\appbar\debug.step.over.png" />
+    <Resource Include="Images\appbar\page.new.png" />
+    <Resource Include="Images\appbar\resource.png" />
+    <Resource Include="Images\appbar\save.png" />
+    <Resource Include="Images\appbar\tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_snap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar\appbar.cabinet.in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\save_white.png" />
+    <Resource Include="Images\tools_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cabinet_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_world_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_bone_blue.png" />
+    <Resource Include="Images\icon_bone_green.png" />
+    <Resource Include="Images\icon_bone_orange.png" />
+    <Resource Include="Images\icon_bone_red.png" />
+    <Resource Include="Images\icon_bone_white.png" />
+    <Resource Include="Images\icon_box_shape_blue.png" />
+    <Resource Include="Images\icon_box_shape_green.png" />
+    <Resource Include="Images\icon_box_shape_orange.png" />
+    <Resource Include="Images\icon_box_shape_red.png" />
+    <Resource Include="Images\icon_box_shape_white.png" />
+    <Resource Include="Images\icon_mesh_blue.png" />
+    <Resource Include="Images\icon_mesh_green.png" />
+    <Resource Include="Images\icon_mesh_orange.png" />
+    <Resource Include="Images\icon_mesh_red.png" />
+    <Resource Include="Images\icon_mesh_white.png" />
+    <Resource Include="Images\icon_path_blue.png" />
+    <Resource Include="Images\icon_path_green.png" />
+    <Resource Include="Images\icon_path_orange.png" />
+    <Resource Include="Images\icon_path_red.png" />
+    <Resource Include="Images\icon_path_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_point_blue.png" />
+    <Resource Include="Images\icon_point_green.png" />
+    <Resource Include="Images\icon_point_orange.png" />
+    <Resource Include="Images\icon_point_red.png" />
+    <Resource Include="Images\icon_point_white.png" />
+    <Resource Include="Images\icon_point_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_insert_after.png" />
+    <Resource Include="Images\icon_insert_before.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\expand_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\godot\icon_instance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copy_white.png" />
+    <Resource Include="Images\paste_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\color_cube.png" />
+    <Resource Include="Images\decal_cube.png" />
+    <Resource Include="Images\gradient_cube.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_plane_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\texture_dome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cylinder_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\puzzle_white.png" />
+    <Resource Include="Images\puzzle_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TextureNodes\ArtisticNoise.png" />
+    <Resource Include="Images\TextureNodes\BrickGenerator.png" />
+    <Resource Include="Images\TextureNodes\BrightnessNode.png" />
+    <Resource Include="Images\TextureNodes\BrightnessRGBNode.png" />
+    <Resource Include="Images\TextureNodes\ChainGenerator.png" />
+    <Resource Include="Images\TextureNodes\ChainMailGenerator.png" />
+    <Resource Include="Images\TextureNodes\CheckerGenerator.png" />
+    <Resource Include="Images\TextureNodes\Clamp01Node.png" />
+    <Resource Include="Images\TextureNodes\ClipTextureModifier.png" />
+    <Resource Include="Images\TextureNodes\CombineNode.png" />
+    <Resource Include="Images\TextureNodes\ContrastNode.png" />
+    <Resource Include="Images\TextureNodes\ConvolutionFilter.png" />
+    <Resource Include="Images\TextureNodes\CurveTextureModifier.png" />
+    <Resource Include="Images\TextureNodes\DivModifier.png" />
+    <Resource Include="Images\TextureNodes\EmbossModifier.png" />
+    <Resource Include="Images\TextureNodes\ErosionModifier.png" />
+    <Resource Include="Images\TextureNodes\FBMGenerator.png" />
+    <Resource Include="Images\TextureNodes\GaborNoise.png" />
+    <Resource Include="Images\TextureNodes\Generic.png" />
+    <Resource Include="Images\TextureNodes\generic_baker.png" />
+    <Resource Include="Images\TextureNodes\GradientGenerator.png" />
+    <Resource Include="Images\TextureNodes\GradientRampTextureModifier.png" />
+    <Resource Include="Images\TextureNodes\HSVToRGBNode.png" />
+    <Resource Include="Images\TextureNodes\InvertTextureModifier.png" />
+    <Resource Include="Images\TextureNodes\NoiseGenerator.png" />
+    <Resource Include="Images\TextureNodes\OddBlocksGenerator.png" />
+    <Resource Include="Images\TextureNodes\PBRAlbedoEnforcerNode.png" />
+    <Resource Include="Images\TextureNodes\PerlinNoiseGenerator.png" />
+    <Resource Include="Images\TextureNodes\PosterizeModifier.png" />
+    <Resource Include="Images\TextureNodes\ReplaceColorModifier.png" />
+    <Resource Include="Images\TextureNodes\RGBToHSVNode.png" />
+    <Resource Include="Images\TextureNodes\RowsGenerator.png" />
+    <Resource Include="Images\TextureNodes\ScalesGenerator.png" />
+    <Resource Include="Images\TextureNodes\ScratchesGenerator.png" />
+    <Resource Include="Images\TextureNodes\SelectColorModifier.png" />
+    <Resource Include="Images\TextureNodes\SharpenFilter.png" />
+    <Resource Include="Images\TextureNodes\SharpenModifier.png" />
+    <Resource Include="Images\TextureNodes\SimpleTransformModifier.png" />
+    <Resource Include="Images\TextureNodes\SobelTextureModifier.png" />
+    <Resource Include="Images\TextureNodes\SplitNode.png" />
+    <Resource Include="Images\TextureNodes\StreakModifier.png" />
+    <Resource Include="Images\TextureNodes\TextureBombGenerator.png" />
+    <Resource Include="Images\TextureNodes\TextureFunction2D.png" />
+    <Resource Include="Images\TextureNodes\TileModifier.png" />
+    <Resource Include="Images\TextureNodes\TransformModifier.png" />
+    <Resource Include="Images\TextureNodes\TrimModifier.png" />
+    <Resource Include="Images\TextureNodes\VoronoiGenerator.png" />
+    <Resource Include="Images\TextureNodes\WarpModifier.png" />
+    <Resource Include="Images\TextureNodes\WeaveGenerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\MainScreenHelp.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\LaunchScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\DesignScreen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\DesignScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IconManifest.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar\appbar.align.justify.png" />
+    <Resource Include="Images\appbar\appbar.border.all.png" />
+    <Resource Include="Images\appbar\appbar.folder.open.png" />
+    <Resource Include="Images\appbar\appbar.notification.above.multiple.png" />
+    <Resource Include="Images\appbar\appbar.puzzle.png" />
+    <Resource Include="Images\appbar\appbar.refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar\appbar.redo.png" />
+    <Resource Include="Images\appbar\appbar.undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\SettingsScreen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\SettingsScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\Properties.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\DataGrid.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\History.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\Properties.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appbar\appbar.key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\Permutations.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\DataGrid.png" />
+    <Resource Include="Images\help\History.png" />
+    <Resource Include="Images\help\Permutations.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuickGuide\Reports.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\Reports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\Templates_-_Google_Chrome_2017-11-21_20-39-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\commentboxes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\DetailsReport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\DragSelect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TextureNodes\TextGenerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\NodeContextMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\help\ExportMesh.png" />
+    <Resource Include="Images\help\Prefabs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PressCopy.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_light.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rmdir /s /q "C:\dev\Sprue\SprueKit\bin\Debug\Content"
+rmdir /s /q "C:\dev\Sprue\SprueKit\bin\Release\Content"
+xcopy /s "C:\dev\Sprue\SprueKit\Content\bin" "C:\dev\Sprue\SprueKit\bin\Release\Content\"
+xcopy /s "C:\dev\Sprue\SprueKit\Content\bin" "C:\dev\Sprue\SprueKit\bin\Debug\Content\"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.0.0\build\dotnet\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets'))" />
+  </Target>
+  <Import Project="..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

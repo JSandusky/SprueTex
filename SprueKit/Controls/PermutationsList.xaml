@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="SprueKit.Controls.PermutationsList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Controls"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <ScrollViewer DockPanel.Dock="Bottom" x:Name="scrollView">
+        <ItemsControl x:Name="permutationsList">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0, 0, 0, 1" BorderBrush="Black" Margin="3">
+                        <Grid x:Name="itemGrid" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Name" Grid.Column="0"/>
+                            <TextBox Grid.Column="1" Text="{Binding Name}"/>
+
+                            <Label Content="Weight" Grid.Column="2" Margin="5"/>
+                            <TextBox Grid.Column="3" Text="{Binding Weight}"/>
+
+                            <Label Content="Flags" Grid.Column="0" Grid.Row="1" />
+                            <local:CheckboxMatrix x:Name="flagsMatrix" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Value="{Binding Flags, UpdateSourceTrigger=PropertyChanged}" Margin="3" DataContext="{Binding}"/>
+
+                            <Label Content="Value" Grid.Column="0" Grid.Row="2" />
+                            <local:GenericDataEditor x:Name="valueEditor" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" TargetObject="{Binding Value}" />
+
+                            <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="4" VerticalAlignment="Top" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Button Content="Use" Grid.Row="0" Margin="5 0 5 0" Padding="2" Tag="{Binding}" Click="UsePermClick"/>
+                                <Button Content="Delete" Grid.Row="1" Margin="5 5 5 0" Padding="2" Tag="{Binding}" Click="DeletePermClick"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+            <ItemsControl.Style>
+                <Style TargetType="ItemsControl">
+                    <Style.Triggers>
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <StackPanel>
+                                            <mui:BBCodeBlock Margin="10">
+                                                There are no permutations for this field.</mui:BBCodeBlock>
+                                            <mui:BBCodeBlock Margin="10">
+                                                The [b][i]Add Permutation[/i][/b] button below will create a new permutation with the field's current value.
+                                            </mui:BBCodeBlock>
+                                        <!--<TextBlock Text="There are no permutations for this field." Margin="10"/>-->
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ItemsControl.Style>
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>

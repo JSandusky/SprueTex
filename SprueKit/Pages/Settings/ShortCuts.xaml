@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="SprueKit.Pages.Settings.ShortCuts"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Pages.Settings"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             VisualEdgeMode="Aliased">
+    <Grid Margin="10, 0, 10, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="header" FontSize="16 pt" FontWeight="Bold" Grid.Row="0" Content="Short Cuts"/>
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl Name="shortCutGroups">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Expander Header="{Binding Name}" Margin="5, 0, 5, 20" ToolTip="{Binding Description}">
+                        <ItemsControl ItemsSource="{Binding ShortCuts}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+
+                                            <DockPanel>
+                                                <Label Content="{Binding Command.Name}" ToolTip="{Binding Command.ToolTip}" Margin="0,5,0,0" DockPanel.Dock="Left" VerticalAlignment="Bottom"/>
+                                                <TextBlock Text="{Binding Command.ToolTip}"  HorizontalAlignment="Right" DockPanel.Dock="Right" />
+                                            </DockPanel>
+                                            <TextBox Text="{Binding Text}" 
+                                                Foreground="LightGray"
+                                                PreviewKeyDown="TextBox_PreviewKeyDown" 
+                                                PreviewKeyUp="TextBox_PreviewKeyUp" 
+                                                GotFocus="TextBox_GotFocus"
+                                                LostFocus="TextBox_LostFocus"
+                                                IsReadOnly="True" Grid.Row="1"
+                                                ToolTip="{Binding Command.ToolTip}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        </Expander>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

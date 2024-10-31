@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/Reports.png" width="1275" height="960">
+    <map image="Images/help/Reports.png">
+        <area target="" alt="CreateNew" title="CreateNew" href="" coords="6,877,317,946" shape="rect"/>
+        <area target="" alt="Delete" title="Delete" href="" coords="326,886,508,942" shape="rect"/>
+        <area target="" alt="Generate" title="Generate" href="" coords="585,886,1157,949" shape="rect"/>
+        <area target="" alt="ReportList" title="ReportList" href="" coords="6,63,310,509" shape="rect"/>
+        <area target="" alt="Configure" title="Configure" href="" coords="344,250,1247,559" shape="rect" />
+    </map>
+    <footer>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="CreateNew">
+        <p>Clicking [b]Create New[/b] will create a new [i]empty[/i] report.</p>
+    </section>
+    <section name="Delete">
+        <p>Deletes the currently selected report.</p>
+        <p>[color=Red]WARNING:[/color] this action is not currently reversible.</p>
+    </section>
+    <section name="Generate">
+        <p>Executes the currently selected report after prompting for where to save it to.</p>
+        <p>This process can take a while, especially for reports containing multiple files.</p>
+    </section>
+    <section name="ReportList">
+        <p>All existing reports are displayed in the list on the left.</p>
+    </section>
+    <section name="Configure">
+        <p>Files and folders have to be added to a report for it to be possible to generate anything.</p>
+        <p>Directories will include all texture graph files in them, and if [b]Recurse Folders[/b] is checked it will also include texture graphs in sub-folders.</p>
+        <p>The [b]Visual Overview[/b] report is the most useful when generating a report on a large number files.</p>
+    </section>
+</help>

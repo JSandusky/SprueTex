@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="SprueKit.Pages.SettingsScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Pages"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             VisualEdgeMode="Aliased">
+    <mui:ModernTab Layout="List" x:Name="settingsPages">
+        <mui:ModernTab.Links>
+            <mui:Link DisplayName="General" Source="/Controls/ReflectivePage.xaml#general" />
+            <mui:Link DisplayName="3D Viewport" Source="/Controls/ReflectivePage.xaml#viewport" />
+            <mui:Link DisplayName="Meshing" Source="/Controls/ReflectivePage.xaml#meshing" />
+            <mui:Link DisplayName="UV Generation" Source="/Controls/ReflectivePage.xaml#uvgeneration" />
+            <mui:Link DisplayName="Texture Graph Settings" Source="/Controls/ReflectivePage.xaml#texturegraphsettings" />
+
+            <!--<mui:Link DisplayName="Capabilities" Source="/Pages/Settings/BitSettingsPage.xaml#capabilities" />-->
+            <mui:Link DisplayName="User Flags" Source="/Pages/Settings/BitSettingsPage.xaml#userflags" />
+            <mui:Link DisplayName="Shortcuts" Source="/Pages/Settings/ShortCuts.xaml" />
+            <mui:Link DisplayName="Licenses" Source="/Pages/Settings/Licenses.xaml" />
+            <mui:Link DisplayName="EULA" Source="/Pages/Settings/Eula.xaml" />
+        </mui:ModernTab.Links>
+    </mui:ModernTab>
+</UserControl>

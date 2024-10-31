@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/SettingsScreen.png" width="1275" height="960">
+    <map name="Images/Help/SettingsScreen.png">
+        <area target="" alt="SettingsPages" title="SettingsPages" href="" coords="8,63,247,243" shape="rect" />
+        <area target="" alt="Licenses" title="Licenses" href="" coords="8,248,245,316" shape="rect" />
+        <area target="" alt="SettingName" title="SettingName" href="" coords="297,142,481,178" shape="rect" />
+        <area target="" alt="SettingDescription" title="SettingDescription" href="" coords="607,140,1200,174" shape="rect" />
+    </map>
+    <footer>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url]</p>
+    </footer>
+    <section name="SettingsPages">
+        <p>On the left you can select which page of settings to view.</p>
+        <p>* [b]General[/b] settings allow you to configure paths that the program should include in the [b]Resource Browser[/b] tab of the [b]Design Screen[/b]</p>
+        <p>* [b]3D Viewport[/b] lets you configure viewport navigation keys, invert the Y-axis, and set speeds of movement</p>
+        <p>* [b]User Flags[/b] contains the customizable flag names used by permutations</p>
+        <p>* [b]Shortcuts[/b] is where the accelerator keys for different commands are configured. [b]CTRL + SPACEBAR[/b] to open the [b]Quick Action[/b] menu is not configurable.</p>
+    </section>
+    <section name="Licenses">
+        <p>You can also read the licenses of 3rd party software used by SprueTex as well as the software EULA itself here in the [b]Settings[/b] screen.</p>
+    </section>
+    <section name="SettingName">
+        <p>For each setting the name of it will be displayed above the widget for editing it.</p>
+    </section>
+    <section name="SettingDescription">
+        <p>A brief synopsis of what the setting is found to the right of the setting's name.</p>
+    </section>
+</help>

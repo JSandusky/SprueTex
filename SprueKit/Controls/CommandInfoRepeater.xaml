@@ -1,0 +1,25 @@
+﻿<ItemsControl x:Class="SprueKit.Controls.CommandInfoRepeater"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Controls"
+             mc:Ignorable="d" 
+             x:Name="root"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+            <StackPanel x:Name="panel" Orientation="{Binding Orientation, ElementName=root}" />
+        </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+
+    <ItemsControl.ItemTemplate>
+        <DataTemplate>
+            <Grid Margin="3">
+                <Button x:Name="itemButton" Click="itemButton_Click" ToolTip="{Binding ToolTip}" Tag="{Binding}" Width="32" Height="32" />
+                <Image Source="{Binding Icon}" Width="24" Height="24" IsHitTestVisible="False" />
+            </Grid>
+        </DataTemplate>
+    </ItemsControl.ItemTemplate>
+</ItemsControl>

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SprueKit.Controls.GraphControl"
+             x:Name="Master"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Controls"
+             xmlns:graph="clr-namespace:SprueKit.Controls.GraphParts"
+             xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Loaded="Master_Loaded" VisualEdgeMode="Aliased">
+    <UserControl.Resources>
+        <BitmapImage UriSource="/Images/appbar/appbar.key.png" x:Key="LegendIcon" />
+    </UserControl.Resources>
+    <Grid>
+        <Canvas x:Name="canvas" ClipToBounds="True" Background="Transparent" 
+                MouseLeftButtonDown="canvas_MouseLeftButtonDown" 
+                MouseLeftButtonUp="canvas_MouseLeftButtonUp" 
+                MouseMove="canvas_MouseMove"
+                MouseWheel="canvas_MouseWheel"
+                Focusable="True"
+                dd:DragDrop.IsDropTarget="True" 
+                dd:DragDrop.DropHandler="{Binding ElementName=Master}" >
+            <Canvas.ContextMenu>
+                <ContextMenu x:Name="canvasCtxMenu" />
+            </Canvas.ContextMenu>
+            <Rectangle
+				    x:Name="SelectionBox"
+                    Fill="CornflowerBlue"
+                    Opacity="0.3"
+				    Stroke="White"
+                    IsHitTestVisible="False"
+				    StrokeThickness="1" />
+        </Canvas>
+        <Label x:Name="graphTitle" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Content="{Binding Title,ElementName=Master}" Margin="5,5"/>
+        <Button x:Name="legend" Margin="0, 10, 10, 0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="legend_Click" Padding="2">
+            <Image Source="{StaticResource LegendIcon}" MaxWidth="20" MaxHeight="20" />
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<help image="Images/help/Properties.png" width="1275" height="753">
+    <map name="Images/help/Properties.png">
+        <area target="" alt="SheetName" title="SheetName" href="" coords="58,14,393,59" shape="rect" />
+        <area target="" alt="Permutation" title="Permutation" href="" coords="326,203,402,234" shape="rect" />
+        <area target="" alt="PropertyName" title="PropertyName" href="" coords="58,63,166,97" shape="rect" />
+        <area target="" alt="Colors" title="Colors" href="" coords="62,538,405,606" shape="rect" />
+        <area target="" alt="GradientHandle" title="GradientHandle" href="" coords="639,261,689,315" shape="rect" />
+        <area target="" alt="CurveChannel" title="CurveChannel" href="" coords="876,389,1177,419" shape="rect" />
+        <area target="" alt="CurveHandles" title="CurveHandles" href="" coords="993,259,1035,293" shape="rect" />
+        <area target="" alt="CurveLinear" title="CurveLinear" href="" coords="889,428,1008,457" shape="rect" />
+        <area target="" alt="CurveMatch" title="CurveMatch" href="" coords="1056,428,1155,457" shape="rect" />
+    </map>
+    <footer>
+        <p>Would you like to know more? [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DataGrid.xml]DataGrid[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Permutations.xml]Permutations[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.History.xml]Undo/Redo[/url]</p>
+        <p>Other pages: [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.MainScreenHelp.xml]Launch Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.DesignScreen.xml]Design Screen[/url], [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.Reports.xml]Reports[/url], and [url=/Controls/ImageMap.xaml#SprueKit.QuickGuide.SettingsScreen.xml]Settings[/url]</p>
+    </footer>
+    <section name="SheetName">
+        <p>The type of object currently being edited is displayed at the top of the [b]Properties[/b] panel.</p>
+    </section>
+    <section name="Permutation">
+        <p>Fields that support [b]Permutations[/b] will have a ticket icon above them that be clicked to view and edit permutations.</p>
+    </section>
+    <section name="PropertyName">
+        <p>Fields are display with the name of the field above the widget for editing them.</p>
+        <p>A [color=LimeGreen]green[/color] name means that the field has a value different then the default value.</p>
+    </section>
+    <section name="Colors">
+        <p>Color fields have a bar beneath them that displays the color.</p>
+        <p>[b]Click[/b] on the bar to open a color picker to select the color to use.</p>
+    </section>
+    <section name="GradientHandle">
+        <p>When editing gradients you can [b]CTRL + CLICK[/b] to insert new gradient stops.</p>
+        <p>[b]Double click[/b] the stop to edit the color for it.</p>
+        <p>Gradient stops can be removed by [b]CTRL + CLICK[/b]ing on them again.</p>
+    </section>
+    <section name="CurveChannel">
+        <p>Selecting which channel of [i]Color Curves[/i] to edit is done here.</p>
+        <p>If the channel is set to [b]All[/b] then it will replace the existing values in other channels.</p>
+    </section>
+    <section name="CurveHandles">
+        <p>Curve handles can be inserted in the curves plot with [b]CTRL + CLICK[/b]</p>
+        <p>Curve handles can be removed by [b]CTRL + CLICK[/b]ing on them again.</p>
+    </section>
+    <section name="CurveLinear">
+        <p>The [i]Make Linear[/i] command resets the curve to a linear one.</p>
+    </section>
+    <section name="CurveMatch">
+        <p>The [i]Curve Match[/i] command will set the curves of [b]ALL[/b] other channels to match the current curve.</p>        
+    </section>
+</help>

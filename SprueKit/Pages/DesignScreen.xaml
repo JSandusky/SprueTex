@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="SprueKit.Pages.DesignScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Pages"
+             xmlns:sprue="clr-namespace:SprueKit"
+             xmlns:sprueCtrl="clr-namespace:SprueKit.Controls"
+             xmlns:graphCtrl="clr-namespace:SprueKit.Graphics"
+             xmlns:trueGraphCtrl="clr-namespace:SprueKit.Graphics.Controls"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             x:Name="designFrame"
+             d:DesignHeight="300" d:DesignWidth="300"
+             VisualEdgeMode="Aliased">
+    <UserControl.Resources>
+        <!-- Toolbar -->
+        <BitmapImage x:Key="ExpandImage" UriSource="/Images/expand_white.png" />
+        <BitmapImage x:Key="DataGridIcon" UriSource="/Images/appbar/appbar.border.all.png" />
+        <BitmapImage x:Key="BrowserIcon" UriSource="/Images/appbar/appbar.folder.open.png" />
+        <BitmapImage x:Key="PropertiesIcon" UriSource="/Images/appbar/appbar.align.justify.png" />
+        <BitmapImage x:Key="PermutationsIcon" UriSource="/Images/appbar/appbar.puzzle.png" />
+        <BitmapImage x:Key="LogIcon" UriSource="/Images/appbar/appbar.notification.above.multiple.png" />
+        <BitmapImage x:Key="HistoryIcon" UriSource="/Images/appbar/appbar.refresh.png" />
+    </UserControl.Resources>
+    <Grid MaxWidth="{Binding ActualWidth, ElementName=designFrame, Mode=OneWay}" Margin="0 -15 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="99*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Toolbar -->
+        <DockPanel Grid.Column="0">
+            <sprueCtrl:CommandInfoRepeater x:Name="docCommands" ItemsSource="{Binding ActiveDocument.Commands, Source=DocumentManager}" Width="32" DockPanel.Dock="Top"/>
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
+                <Button ToolTip="Expand 3d view" Width="32" Height="32" Padding="-5" Margin="2" Click="OnExpandSideView" Content="3D" FontWeight="Bold"/>
+                <Button ToolTip="Expand node canvas" Width="32" Padding="-5" Margin="2" Click="OnExpandView">
+                    <Image Width="32" Height="32" Source="{StaticResource ExpandImage}" />
+                </Button>
+            </StackPanel>
+        </DockPanel>
+
+        <Grid Name="ideGrid" MaxWidth="{Binding ActualWidth, ElementName=designFrame, Mode=OneWay}" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" MinHeight="240"/>
+                <RowDefinition Height="6" MinHeight="6"/>
+                <RowDefinition Height="1*" MinHeight="26"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="0"/>
+                <ColumnDefinition Width="6" MinWidth="6"/>
+                <ColumnDefinition Width="5*" MinWidth="0" />
+                <ColumnDefinition Width="6" MinWidth="6"/>
+                <ColumnDefinition Width="1*" MinWidth="0"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Side -->
+            <mui:ModernFrame x:Name="leftFrame" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"></mui:ModernFrame>
+
+            <sprueCtrl:SimpleGridSplitter x:Name="splitLeftVertical" Width="6" Grid.Column="1" Grid.RowSpan="3" MouseDoubleClick="GridSplitter_MouseDoubleClick" />
+
+            <!-- Editor Area -->
+            <Grid Grid.Column="2" Grid.Row="0" x:Name="mainContent" >
+                <!--<sprueCtrl:DocumentTabContainer x:Name="docTabs" />-->
+            </Grid>
+
+            <sprueCtrl:SimpleGridSplitter x:Name="splitRightVertical" Width="6" Grid.Column="3" Grid.RowSpan="2" MouseDoubleClick="GridSplitter_MouseDoubleClick" />
+
+            <!-- Right side -->
+            <Grid Grid.Column="4" Grid.Row="0" Name="infoTabGrid">
+                <TabControl x:Name="rightTabs">
+                    <TabItem x:Name="propertyTab">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource PropertiesIcon}" />
+                                <Label Content="Properties"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <sprueCtrl:Properties x:Name="propertyEditor" />
+                    </TabItem>
+                    <TabItem x:Name="historyTab">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource HistoryIcon}" />
+                                <Label Content="History"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <sprueCtrl:UndoHistoryCtrl x:Name="undoRedoHistory" />
+                    </TabItem>
+                </TabControl>
+            </Grid>
+
+            <sprueCtrl:SimpleGridSplitter Height="6" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" x:Name="splitLog" MouseDoubleClick="GridSplitter_MouseDoubleClick"/>
+
+            <!-- Lower section -->
+            <Grid x:Name="lowerSection" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3">
+                <TabControl x:Name="lowerTabs" Background="Transparent">
+                    <TabItem x:Name="timlineTab">
+                        <TabItem.Header>
+                            <Label Content="Timeline" />
+                        </TabItem.Header>
+
+                        <Grid>
+                            <sprueCtrl:VirtualScrollArea x:Name="timelineScroller" Grid.Column="1">
+                                <sprueCtrl:VirtualScrollArea.ScrollableContent>
+                                    <trueGraphCtrl:Timeline />
+                                </sprueCtrl:VirtualScrollArea.ScrollableContent>
+                            </sprueCtrl:VirtualScrollArea>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="2">
+                                <Button Content="Play" Click="TimelinePlay"/>
+                                <Button Content="Loop" />
+                                <Button Content="Pause" Click="TimelinePause" />
+                                <Button Content="Reset" />
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="resourceTab">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource BrowserIcon}" />
+                                <Label Content="Resource Browser"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <sprueCtrl:FileBrowser x:Name="fileBrowser" />
+                    </TabItem>
+                    <TabItem x:Name="logTab">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource LogIcon}" />
+                                <Label Content="Log"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <sprueCtrl:LogViewer x:Name="logView" />
+                    </TabItem>
+                    <TabItem x:Name="propertiesDataGrid">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource DataGridIcon}" />
+                                <Label Content="Data Grid"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </TabItem.Header>
+                        <sprueCtrl:PropertiesDataGrid x:Name="propsGrid" />
+                    </TabItem>
+                    <TabItem x:Name="permutationsTab">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource PermutationsIcon}" />
+                                <Label Content="Permutations" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <sprueCtrl:PermutationsDataGrid x:Name="permutationsGrid" />
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

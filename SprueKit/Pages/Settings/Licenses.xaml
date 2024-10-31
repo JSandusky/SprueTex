@@ -1,0 +1,284 @@
+﻿<UserControl x:Class="SprueKit.Pages.Settings.Licenses"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Pages.Settings"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             VisualEdgeMode="Aliased">
+    <ScrollViewer ScrollViewer.PanningMode="VerticalFirst">
+        <StackPanel Orientation="Vertical" Margin="20,0">
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Accidental Noise Library" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright (C) 2011 Joshua Tippetts
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.</mui:BBCodeBlock>
+            
+            <Label FontSize="16" FontWeight="Bold" Content="Autodesk FBX" Margin="5,20,5,0"/>
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">This software contains Autodesk® FBX® code developed by Autodesk, Inc. Copyright 2014 Autodesk, Inc. All rights, reserved. Such code is provided “as is” and Autodesk, Inc. disclaims any and all warranties, whether express or implied, including without limitation the implied warranties of merchantability, fitness for a particular purpose or non-infringement of third party rights. In no event shall Autodesk, Inc. be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of such code.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Base64" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright (C) 2013 Tomas Kislan
+Copyright (C) 2013 Adam Rudd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Eigen" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">This Source Code Form is subject to the terms of the Mozilla
+Public License v. 2.0. If a copy of the MPL was not distributed
+with this file, You can obtain one at [url=http://mozilla.org/MPL/2.0/]http://mozilla.org/MPL/2.0/]http://mozilla.org/MPL/2.0/]http://mozilla.org/MPL/2.0/[/url].</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Content="Extended WPF Toolkit" Margin="5,20,5,0" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright (C) 2007-2013 Xceed Software Inc.
+
+This program is provided to you under the terms of the Microsoft Public
+License (Ms-PL) as published at [url=http://wpftoolkit.codeplex.com/license]http://wpftoolkit.codeplex.com/license[/url]
+
+For more features, controls, and fast professional support,
+pick up the Plus Edition at [url=http://xceed.com/wpf_toolkit]http://xceed.com/wpf_toolkit[/url]</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="FastNoise" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">MIT License
+
+Copyright(c) 2016 Jordan Peck
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files(the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions :
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="LibIGL" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright (C) 2013 Alec Jacobson
+
+This Source Code Form is subject to the terms of the Mozilla Public License
+v. 2.0. If a copy of the MPL was not distributed with this file, You can
+obtain one at [url=http://mozilla.org/MPL/2.0/]http://mozilla.org/MPL/2.0/[/url].</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Lib Morton" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">MIT License
+
+Copyright (c) 2016 Jeroen Baert
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Jzon" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright (c) 2015 Johannes Häggqvist
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="MakeID" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Author:
+Emil Persson, A.K.A. Humus.
+[url=http://www.humus.name]http://www.humus.name[/url]
+
+License:
+Public Domain
+
+This file is released in the hopes that it will be useful. Use in whatever way you like, but no guarantees that it
+actually works or fits any particular purpose. It has been unit-tested and benchmarked though, and seems to do
+what it was designed to do, and seems pretty quick at it too.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Content="MathGeoLib" Margin="5,20,5,0"/>
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright Jukka Jylänki
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   [url=http://www.apache.org/licenses/LICENSE-2.0]http://www.apache.org/licenses/LICENSE-2.0[/url]
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Modern UI" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Microsoft Public License (Ms-PL)
+
+This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
+
+Definitions
+The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.
+
+A "contribution" is the original software, or any additions or changes to the software.
+
+A "contributor" is any person that distributes its contribution under this license.
+
+"Licensed patents" are a contributor's patent claims that read directly on its contribution.
+
+Grant of Rights
+(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
+
+(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
+
+Conditions and Limitations
+(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
+
+(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
+
+(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
+
+(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
+
+(E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement.</mui:BBCodeBlock>
+                
+
+                <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Nano SVG" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright (c) 2013-14 Mikko Mononen
+ 
+ This software is provided 'as-is', without any express or implied
+ warranty.  In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ 
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ 
+ 1. The origin of this software must not be misrepresented; you must not
+ claim that you wrote the original software. If you use this software
+ in a product, an acknowledgment in the product documentation would be
+ appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+ misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
+ 
+ The SVG parser is based on Anti-Grain Geometry 2.4 SVG example
+ Copyright (C) 2002-2004 Maxim Shemanarev (McSeem) ([url=http://www.antigrain.com/]http://www.antigrain.com/[/url])
+ 
+ Arc calculation code based on canvg ([url=https://code.google.com/p/canvg/]https://code.google.com/p/canvg/[/url])
+ 
+ Bounding box calculation based on [url=http://blog.hackers-cafe.net/2009/06/how-to-calculate-bezier-curves-bounding.html]http://blog.hackers-cafe.net/2009/06/how-to-calculate-bezier-curves-bounding.html[/url]</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Content="STB Libraries used" Margin="5,20,5,0" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Author:
+Sean Barrett               
+[url=https://nothings.org/]https://nothings.org/[/url]
+                
+Public domain.
+            
+[url=https://github.com/nothings/stb/blob/master/stb_image.h]stb_image[/url]
+
+[url=https://github.com/nothings/stb/blob/master/stb_image_write.h]stb_image_write[url]
+            
+[url=https://github.com/nothings/stb/blob/master/stb_rect_pack.h]stb_rect_pack[url]</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="TinyXML 2" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Original code by Lee Thomason ([url=www.grinninglizard.com]www.grinninglizard.com[/url])
+
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any
+damages arising from the use of this software.
+
+Permission is granted to anyone to use this software for any
+purpose, including commercial applications, and to alter it and
+redistribute it freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must
+not claim that you wrote the original software. If you use this
+software in a product, an acknowledgment in the product documentation
+would be appreciated but is not required.
+
+2. Altered source versions must be plainly marked as such, and
+must not be misrepresented as being the original software.
+
+3. This notice may not be removed or altered from any source
+distribution.</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="UriParser" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">Copyright(c) 2013 Covenant Eyes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files(the "Software"), to deal in the Software
+without restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and / or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the following
+conditions :
+
+The above copyright notice and this permission notice shall be included in all copies
+or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Modifications by Jonathan Sandusky in 2016
+     Summary: Add processing parameter strings into a VariantMap</mui:BBCodeBlock>
+
+            <Label FontSize="16" FontWeight="Bold" Margin="5, 20, 5, 0" Content="Skybox Textures" />
+            <mui:BBCodeBlock Margin="5,0,5,10" xml:space="preserve">By Emil Persson
+                
+Filtered mip-map variants for IBL created by Jonathan Sandusky
+                
+[url=https://creativecommons.org/licenses/by/3.0/]Creative Commons Attribution 3.0 Unported (CC BY 3.0)[/url]</mui:BBCodeBlock>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,24 @@
+﻿SprueTex
+developed by Jonathan Sandusky, yes - it's a one-man project
+Procedural Texture Creation tool
+for Windows 7, 8.1, and 10
+http://spruekit.itch.io/spruetex
+Price: $30 flat
+Download Key: ________________
+
+SprueTex is a procedural texture creation tool for the PBR pipeline.
+
+There is so little UI customization that it borders on being nearly uncustomizable. 
+Instead everything is centered on an easy to use workflow that is quick to discover and virtually impossible to get lost in.
+One solid workflow over hiding unwieldlyness behind unnecessary tweaking.
+
+From color-curves and gradient lookup-tables to baking ambient-occlusion and thickness maps, SprueTex's 108 nodes cover nearly everything.
+
+In lieu of tiresome text-heavy manuals SprueTex's "Quick Guide" help reads more like a pop-up book that
+provides the information the user needs where they need it and as they see it. When it's needed the
+old fashioned manual is still there, including illustrations of exactly what the different properites of
+the many nodes will do.
+
+For heavy use the reporting capabilities make it easy to manage the consistency of assets across many files, enforce art rules, and report to the cheese-on-high. 
+The command-line interface is also there for tying into the production pipeline to generate reports or high-res outputs whenever a file is changed or version-control updated. 
+The underlying format of the texture-graphs has also been kept as simple as possible with the full intent that the end-user may very well wish to dive into tweaking, scanning, or generating the files for their own purposes.

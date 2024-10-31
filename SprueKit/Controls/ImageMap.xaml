@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="SprueKit.Controls.ImageMap"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SprueKit.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Directions" Grid.Row="0" Text="Click a highlighted region for information on that part of the GUI." Margin="5"/>
+        <Image x:Name="DisplayImage" Grid.Row="1" Stretch="Uniform" />
+        <!-- Bound to the image so that the scaling always works -->
+        <Canvas x:Name="ShapeCanvas" Grid.Row="1" Background="Transparent"
+                Width="{Binding ActualWidth, ElementName=DisplayImage}"
+                Height="{Binding ActualHeight, ElementName=DisplayImage}" />
+        <StackPanel x:Name="Footer" Grid.Row="2" Orientation="Vertical"/>
+    </Grid>
+</UserControl>

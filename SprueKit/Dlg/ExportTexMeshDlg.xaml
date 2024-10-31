@@ -1,0 +1,43 @@
+﻿<mui:ModernDialog x:Class="SprueKit.Dlg.ExportTexMeshDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ctrl="clr-namespace:SprueKit.Controls"
+        Title="Export Mesh" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="30" />
+            <RowDefinition MaxHeight="30"/>
+            <RowDefinition MaxHeight="30"/>
+            <RowDefinition MaxHeight="30"/>
+            <RowDefinition MaxHeight="30"/>
+            <RowDefinition MaxHeight="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Width" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+        <Label Content="Height" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+        <ctrl:NumericTextBox x:Name="txtWidth" Grid.Column="1" Grid.Row="0" Margin="5"  MaxHeight="30" VerticalAlignment="Top" IsInteger="True"/>
+        <ctrl:NumericTextBox x:Name="txtHeight" Grid.Column="1" Grid.Row="1" Margin="5" MaxHeight="30" VerticalAlignment="Top" IsInteger="True"/>
+
+        <Label Content="Height Scale" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+        <ctrl:NumericTextBox x:Name="txtHeightScale" Grid.Column="1" Grid.Row="2" Margin="5"  MaxHeight="30" VerticalAlignment="Top"/>
+        
+        <CheckBox x:Name="chkDecimate" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Decimate"/>
+        
+        <Label Content="Decimation Target" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"/>
+        <ctrl:NumericTextBox x:Name="txtDecimateTarget" Grid.Column="1" Grid.Row="4" Margin="5"  MaxHeight="30" VerticalAlignment="Top"/>
+
+        <Label Content="Mesh Type" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" />
+        <ComboBox x:Name="comboType" Grid.Column="1" Grid.Row="5" Margin="5" MaxHeight="30" VerticalAlignment="Top">
+            <ComboBox.Items>
+                <ComboBoxItem Content="Heightfield" />
+                <ComboBoxItem Content="Marching Squares" />
+                <ComboBoxItem Content="Marching Squares w/ edge intercept" />
+            </ComboBox.Items>
+        </ComboBox>
+    </Grid>
+</mui:ModernDialog>
