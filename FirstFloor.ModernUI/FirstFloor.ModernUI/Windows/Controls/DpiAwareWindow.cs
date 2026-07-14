@@ -21,7 +21,7 @@ namespace FirstFloor.ModernUI.Windows.Controls
         /// <summary>
         /// Occurs when the system or monitor DPI for this window has changed.
         /// </summary>
-        public event EventHandler DpiChanged;
+        public new event EventHandler DpiChanged;
 
         private HwndSource source;
         private DpiInformation dpiInfo;
